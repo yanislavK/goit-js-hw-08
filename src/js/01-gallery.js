@@ -29,31 +29,6 @@ galleryItems.forEach(image => {
   ul.appendChild(li);
 });
 
-ul.addEventListener(`click`, getOriginalImage);
-
-function getOriginalImage(event) {
-  blockStandartAction(event);
-  if (event.target.nodeName != `IMG`) {
-    return;
-  }
-
-  const instance = basicLightbox.create(
-    ` <img width="auto" height="auto" src="${event.target.dataset.source}"> `
-  );
-
-  instance.show();
-
-  ul.addEventListener(`keydown`, event => {
-    if (event.code === `Escape`) {
-      instance.close();
-    }
-  });
-}
-
-function blockStandartAction(event) {
-  event.preventDefault();
-}
-console.log(galleryItems);
 
 const lightbox = new SimpleLightbox('.gallery a', {
   captionsData: `alt`,
